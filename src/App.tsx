@@ -2,9 +2,12 @@ import { CardElement, useBasisTheory } from "@basis-theory/basis-theory-react";
 
 const App = () => {
   // creates a new instance of BasisTheory class
-  const { bt, error } = useBasisTheory("key_us_pub_RZkK7qbfy9nTKZ9m61Y6tD", {
-    elements: true,
-  });
+  const { bt, error } = useBasisTheory(
+    import.meta.env.VITE_BASIS_THEORY_API_KEY,
+    {
+      elements: true,
+    }
+  );
 
   // instance stays undefined during initialization
   if (bt) {
