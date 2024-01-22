@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { CardElement, useBasisTheory } from "@basis-theory/basis-theory-react";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  // creates a new instance of BasisTheory class
+  const { bt, error } = useBasisTheory("<API_KEY>", { elements: true });
+
+  // instance stays undefined during initialization
+  if (bt) {
+    // able to call BasisTheory methods
+  }
+
+  if (error) {
+    // initialization error
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main className="w-full h-screen flex justify-center items-center">
+      <div className="w-10/12 md:w-3/5 max-w-sm rounded-lg border border-gray-100 shadow-sm p-2">
+        <CardElement id="test" bt={bt} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </main>
+  );
+};
 
-export default App
+export default App;
